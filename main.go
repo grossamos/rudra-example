@@ -1,26 +1,27 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+	"rudra-example/controller"
 
-	"rudra-example/handlers"
-	"rudra-example/util"
-
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 )
 
 
+// @title           Rudra Example Project
+// @version         1.0
+// @description     This is a sample project for the rudra test tool
+
+// @license.name  BSD-2-Clause 
+// @license.url   https://raw.githubusercontent.com/grossamos/rudra/main/LICENSE
+
+// @host      localhost:8080
+// @BasePath  /
 func main() {
-    router := mux.NewRouter()
+    r := gin.Default()
 
-    router.HandleFunc("/", handlers.BaseHandler).Methods("GET")
-    router.HandleFunc("/weather", handlers.GetCurrentWeather).Methods("GET")
-    router.HandleFunc("/validate", handlers.ValidateWeather).Methods("POST")
+    r.GET("/", controller.BaseHandler)
+    r.GET("/weather", controller.GetCurrentWeather)
+    r.POST("/validate", controller.ValidateWeather)
 
-    router.Use(util.SetContentTypeJsonMiddleware)
-
-    fmt.Println("Listening on port :8080")
-    log.Fatal(http.ListenAndServe(":8080", router))
+    r.Run(":8080")
 }

@@ -1,8 +1,9 @@
 package util
 
 import (
-	"encoding/json"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ErrorMessage struct {
@@ -10,15 +11,8 @@ type ErrorMessage struct {
 }
 
 
-func UnexplainedError(w http.ResponseWriter) {
-    w.WriteHeader(http.StatusBadRequest)
-    json.NewEncoder(w).Encode(ErrorMessage{Message: "invalid request"})
+func UnexplainedError(c *gin.Context) {
+    payload := ErrorMessage{Message: "invalid request"}
+    c.JSON(http.StatusBadRequest, payload)
 }
 
-func SetContentTypeJsonMiddleware(next http.Handler) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        w.Header().Set("Content-Type", "application/json")
-
-        next.ServeHTTP(w, r)
-    })
-}
