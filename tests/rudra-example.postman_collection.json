@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "9fcaa501-c8b1-46df-83f2-7cd00a894543",
+		"name": "Rudra-example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Weather in my area",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Status is valid\", function () {",
+							"    pm.expect(pm.response.json().Status).to.be.oneOf([\"stormy\", \"windy\", \"sunny\", \"rainy\"])",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/weather",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weather"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Base Page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Status is valid\", function () {",
+							"    pm.expect(pm.response.json().Status).to.eql(\"healthy\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Check - Valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Status is valid\", function () {",
+							"    pm.expect(pm.response.json().Valid).to.be.eql(true)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Status\": \"rainy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/validate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Check - Invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Status is valid\", function () {",
+							"    pm.expect(pm.response.json().Valid).to.be.eql(false)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Status\": \"terrible\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/validate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Check - Format Problems",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"foo\": \"bar\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/validate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"validate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
