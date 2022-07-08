@@ -25,7 +25,7 @@ type WeatherStatus struct {
 // @Summary      provides current weather
 // @Description  gets current weather from a set of states
 // @Produce      json
-// @Success      200 {object}  controller.WeatherStatus
+// @Success      200  {object}  controller.WeatherStatus
 // @Router       /weather [get]
 func GetCurrentWeather(c *gin.Context) {
     payload := WeatherStatus{Status: weatherStates[rand.Intn(len(weatherStates))]}
@@ -36,8 +36,8 @@ func GetCurrentWeather(c *gin.Context) {
 // @Summary      validates weather state
 // @Description  checks if a given state is a valid weather state
 // @Produce      json
-// @Success      200 {object}  controller.IsValid
-// @Failure      400 {object}  util.ErrorMessage
+// @Success      200  {object}  controller.IsValid
+// @Failure      400  {object}  util.ErrorMessage
 // @Router       /validate [post]
 func ValidateWeather(c *gin.Context) {
     body, err := ioutil.ReadAll(c.Request.Body)
