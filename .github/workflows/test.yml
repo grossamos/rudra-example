@@ -15,7 +15,7 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: export NIXPKGS_ALLOW_UNFREE=1 && nix-shell --run "go build"
-      - run: nix-shell --run "./rudra-example" &
+      - run: ./rudra-example &
       - uses: matt-ball/newman-action@master
         with:
           collection: tests/rudra-example.postman_collection.json
