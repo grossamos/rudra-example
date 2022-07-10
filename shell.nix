@@ -10,7 +10,6 @@ pkgs.mkShell {
     pkgs.wget
     pkgs.postman
   ];
-  allowUnfree = true;
   shellHook = ''
     if [ ! -f "./swag" ]; then
         mkdir .tmp
