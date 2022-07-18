@@ -22,6 +22,7 @@ jobs:
       - uses: matt-ball/newman-action@master
         with:
           collection: tests/rudra-example.postman_collection.json
+          environment: tests/rudra-example-ci.postman_environment.json
       - uses: grossamos/rudra@v0.0.2-alpha.1
         with:
           stage: 'evaluation'
