@@ -28,11 +28,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/weather",
+					"raw": "{{base_url}}/weather",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"weather"
 					]
@@ -63,11 +62,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/",
+					"raw": "{{base_url}}/",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						""
 					]
@@ -107,11 +105,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/validate",
+					"raw": "{{base_url}}/validate",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"validate"
 					]
@@ -151,11 +148,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/validate",
+					"raw": "{{base_url}}/validate",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"validate"
 					]
@@ -191,11 +187,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/validate",
+					"raw": "{{base_url}}/validate",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"validate"
 					]
