@@ -39,6 +39,11 @@ const docTemplate = `{
         },
         "/validate": {
             "post": {
+                "security": [
+                    {
+                        "CoolAuthStuff": []
+                    }
+                ],
                 "description": "checks if a given state is a valid weather state",
                 "produces": [
                     "application/json"
@@ -113,6 +118,11 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "CoolAuthStuff": {
+            "type": "basic"
         }
     }
 }`

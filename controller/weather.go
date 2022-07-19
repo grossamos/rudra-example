@@ -35,6 +35,7 @@ func GetCurrentWeather(c *gin.Context) {
 // Validate Weather State godoc
 // @Summary      validates weather state
 // @Description  checks if a given state is a valid weather state
+// @Security     BasicAuth 
 // @Produce      json
 // @Success      200  {object}  controller.IsValid
 // @Failure      400  {object}  util.ErrorMessage

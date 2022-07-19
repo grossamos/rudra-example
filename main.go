@@ -15,6 +15,7 @@ import (
 // @license.url   https://raw.githubusercontent.com/grossamos/rudra/main/LICENSE
 
 // @host      localhost:8080
+// @securityDefinitions.basic  BasicAuth
 // @BasePath  /
 func main() {
     gin.SetMode(gin.ReleaseMode)
