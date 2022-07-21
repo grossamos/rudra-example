@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,3 +23,30 @@ func BaseHandler(ctx *gin.Context) {
     ctx.JSON(http.StatusOK, payload)
 }
 
+
+func Authorize() gin.HandlerFunc {
+    return func(c *gin.Context) {
+        auth := c.GetHeader("Authorization");
+        if auth == "" {
+            c.AbortWithStatus(401)
+            return
+        }
+
+        if !strings.HasPrefix(auth, "Basic") {
+            c.AbortWithStatus(403)
+            return
+        }
+        auth = auth[6:]
+
+        if auth == "Admin" {
+            c.Set("role", "admin")
+        } else if auth == "User" {
+            c.Set("role", "user")
+        } else {
+            c.AbortWithStatus(403)
+            return
+        }
+
+        c.Next()
+    }
+}

@@ -22,9 +22,13 @@ func main() {
 
     r := gin.Default()
 
+    autorized := r.Group("/")
+    autorized.Use(controller.Authorize())
+    autorized.POST("/validate", controller.ValidateWeather)
+
+
     r.GET("/", controller.BaseHandler)
     r.GET("/weather", controller.GetCurrentWeather)
-    r.POST("/validate", controller.ValidateWeather)
 
     fmt.Println("Running on port 8080")
     r.Run(":8080")

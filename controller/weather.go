@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
@@ -41,6 +40,15 @@ func GetCurrentWeather(c *gin.Context) {
 // @Failure      400  {object}  util.ErrorMessage
 // @Router       /validate [post]
 func ValidateWeather(c *gin.Context) {
+    role, exists := c.Get("role")
+    if !exists {
+        c.AbortWithStatus(401)
+        return
+    }
+    if role != "admin" {
+        c.AbortWithStatus(403)
+        return
+    } 
     body, err := ioutil.ReadAll(c.Request.Body)
     if err != nil {
         util.UnexplainedError(c)
@@ -54,8 +62,6 @@ func ValidateWeather(c *gin.Context) {
         util.UnexplainedError(c)
         return
     }
-
-    fmt.Println(input.Status)
 
     isValid := IsValid{Valid: false}
 

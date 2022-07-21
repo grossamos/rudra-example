@@ -94,7 +94,13 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Admin",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"Status\": \"rainy\"\n}",
@@ -117,7 +123,7 @@
 			"response": []
 		},
 		{
-			"name": "Status Check - Invalid",
+			"name": "Status Check - Valid Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -128,7 +134,7 @@
 							"})",
 							"",
 							"pm.test(\"Status is valid\", function () {",
-							"    pm.expect(pm.response.json().Valid).to.be.eql(false)",
+							"    pm.expect(pm.response.json().Valid).to.be.eql(true)",
 							"})"
 						],
 						"type": "text/javascript"
@@ -137,7 +143,106 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Status\": \"rainy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/validate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Check - Unautorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401)",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Admin",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Status\": \"terrible\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/validate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Check - Forbidden",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403)",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic User",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"Status\": \"terrible\"\n}",
@@ -176,7 +281,13 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Admin",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"foo\": \"bar\"\n}",
