@@ -34,7 +34,7 @@
             "post": {
                 "security": [
                     {
-                        "CoolAuthStuff": []
+                        "BasicAuth": []
                     }
                 ],
                 "description": "checks if a given state is a valid weather state",
@@ -114,7 +114,7 @@
         }
     },
     "securityDefinitions": {
-        "CoolAuthStuff": {
+        "BasicAuth": {
             "type": "basic"
         }
     }

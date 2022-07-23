@@ -58,7 +58,7 @@ paths:
           schema:
             $ref: '#/definitions/util.ErrorMessage'
       security:
-      - CoolAuthStuff: []
+      - BasicAuth: []
       summary: validates weather state
   /weather:
     get:
@@ -72,6 +72,6 @@ paths:
             $ref: '#/definitions/controller.WeatherStatus'
       summary: provides current weather
 securityDefinitions:
-  CoolAuthStuff:
+  BasicAuth:
     type: basic
 swagger: "2.0"

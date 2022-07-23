@@ -41,7 +41,7 @@ const docTemplate = `{
             "post": {
                 "security": [
                     {
-                        "CoolAuthStuff": []
+                        "BasicAuth": []
                     }
                 ],
                 "description": "checks if a given state is a valid weather state",
@@ -121,7 +121,7 @@ const docTemplate = `{
         }
     },
     "securityDefinitions": {
-        "CoolAuthStuff": {
+        "BasicAuth": {
             "type": "basic"
         }
     }

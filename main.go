@@ -5,6 +5,9 @@ import (
 	"rudra-example/controller"
 
 	"github.com/gin-gonic/gin"
+    "github.com/swaggo/gin-swagger"
+    "github.com/swaggo/files"
+    _ "rudra-example/docs"
 )
 
 // @title           Rudra Example Project
@@ -29,6 +32,8 @@ func main() {
 
     r.GET("/", controller.BaseHandler)
     r.GET("/weather", controller.GetCurrentWeather)
+
+    r.GET("/openapi/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
     fmt.Println("Running on port 8080")
     r.Run(":8080")
