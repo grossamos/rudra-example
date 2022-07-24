@@ -16,10 +16,10 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: export NIXPKGS_ALLOW_UNFREE=1 && nix-shell --run "go build"
       - run: ./rudra-example &
-      - uses: grossamos/rudra@v0.0.5-3
+      - uses: grossamos/rudra@v0.0.5-4
         with:
           stage: "preperation"
-          openapi-path: "docs/swagger.json"
+          openapi-source: "docs/swagger.json"
           instance-url: "http://localhost:8080"
           account-for-security: false
           test-coverage: "90%"
@@ -27,6 +27,6 @@ jobs:
         with:
           collection: tests/rudra-example.postman_collection.json
           environment: tests/rudra-example-ci.postman_environment.json
-      - uses: grossamos/rudra@v0.0.5-3
+      - uses: grossamos/rudra@v0.0.5-4
         with:
           stage: "evaluation"
