@@ -14,8 +14,8 @@ jobs:
         uses: cachix/install-nix-action@v17
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix run &
-      - run: ./rudra-example &
+      - run: nix build .
+      - run: nix run . &
       - uses: grossamos/rudra@v0.0.5-4
         name: init rudra
         with:
