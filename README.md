@@ -7,7 +7,7 @@ The configuration file for this pipeline can be found under ``./.github/workflow
 Openapi files are automatically generated using a tool called `swag` (see [here](https://github.com/swaggo/swag) for more information).
 These files can be found under the `./docs` directory or under `http://localhost:8080/openapi/index.html` when starting the service.
 
-## local setup
+## Local setup
 ### On GNU/Linux systems or MacOS
 Install nix onto your system
 ```bash
@@ -53,3 +53,7 @@ To update these run:
 nix develop
 ./swag i 
 ```
+
+### Updating dependencies
+The flake configuration file contains a vendoSha256, that has to be updated every time the dependencies change.
+After updating the go dependencies simply run `nix build` and copy over the hash from the error message that occurs.
