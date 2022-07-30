@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  run-integration-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +16,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix build .
       - run: nix run . &
-      - uses: grossamos/rudra@v0.0.6
+      - uses: grossamos/rudra@v0.1.0
         name: init rudra
         with:
           stage: "preperation"
@@ -32,7 +32,7 @@ jobs:
         with:
           collection: tests/rudra-example.postman_collection.json
           environment: tests/rudra-example-ci.postman_environment.json
-      - uses: grossamos/rudra@v0.0.6
+      - uses: grossamos/rudra@v0.1.0
         name: eval rudra
         with:
           stage: "evaluation"
