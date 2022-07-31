@@ -27,6 +27,7 @@ jobs:
           services: |
              http://localhost:8080; docs/swagger.yaml; 13750;
              http://localhost:8080; docs/swagger.yaml; 13751;
+             http://localhost:8080; docs/swagger.yaml; 13752;
       - uses: matt-ball/newman-action@master
         name: run integration tests
         with:
