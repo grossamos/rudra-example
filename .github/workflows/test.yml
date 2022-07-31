@@ -20,14 +20,12 @@ jobs:
         name: init rudra
         with:
           stage: "preperation"
-          #openapi-source: "docs/swagger.json"
-          #instance-url: "http://localhost:8080"
+          openapi-source: "docs/swagger.json"
+          instance-url: "http://localhost:8080"
           account-for-security: false
           test-coverage: "90%"
-          services: |
-             http://localhost:8080; docs/swagger.yaml; 13750;
-             http://localhost:8080; docs/swagger.yaml; 13751;
-             http://localhost:8080; docs/swagger.yaml; 13752;
+          #services: |
+             #http://localhost:8080; docs/swagger.yaml; 13750;
       - uses: matt-ball/newman-action@master
         name: run integration tests
         with:
