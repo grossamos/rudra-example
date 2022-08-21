@@ -26,6 +26,7 @@ jobs:
           instance-url: "http://localhost:8080"
           account-for-security: false
           test-coverage: "90%"
+          only-account-for-pr: true
           #services: |
              #http://localhost:8080; docs/swagger.yaml; 13750;
       - uses: matt-ball/newman-action@master
