@@ -24,7 +24,7 @@ jobs:
           stage: "preperation"
           openapi-source: "docs/swagger.json"
           instance-url: "http://localhost:8080"
-          account-for-security: false
+          account-for-security-forbidden: true
           test-coverage: "90%"
           only-account-for-pr: true
           #services: |
