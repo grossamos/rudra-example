@@ -31,6 +31,16 @@ func GetCurrentWeather(c *gin.Context) {
     c.JSON(http.StatusOK, payload)
 }
 
+// Ping Weather Service
+// @Summary      checks if weather provider works
+// @Description  gets current weather from a set of states
+// @Produce      json
+// @Success      200  
+// @Router       /ping [get]
+func PingWeatherService(c *gin.Context) {
+    c.JSON(http.StatusOK, "Works")
+}
+
 // Validate Weather State godoc
 // @Summary      validates weather state
 // @Description  checks if a given state is a valid weather state

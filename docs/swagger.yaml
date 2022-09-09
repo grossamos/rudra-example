@@ -43,6 +43,15 @@ paths:
           schema:
             $ref: '#/definitions/controller.BaseResponse'
       summary: provide basic info on this API
+  /ping:
+    get:
+      description: gets current weather from a set of states
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: checks if weather provider works
   /validate:
     post:
       description: checks if a given state is a valid weather state

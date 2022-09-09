@@ -37,6 +37,20 @@ const docTemplate = `{
                 }
             }
         },
+        "/ping": {
+            "get": {
+                "description": "gets current weather from a set of states",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "checks if weather provider works",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/validate": {
             "post": {
                 "security": [
