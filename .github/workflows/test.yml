@@ -27,6 +27,7 @@ jobs:
           account-for-security-forbidden: true
           test-coverage: "90%"
           only-account-for-pr: true
+          debug: true
           #services: |
              #http://localhost:8080; docs/swagger.yaml; 13750;
       - uses: matt-ball/newman-action@master
