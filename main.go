@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"rudra-example/controller"
+    "fmt"
+    "rudra-example/controller"
 
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
     "github.com/swaggo/gin-swagger"
     "github.com/swaggo/files"
     _ "rudra-example/docs"
