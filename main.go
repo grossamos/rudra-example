@@ -32,6 +32,7 @@ func main() {
 
     r.GET("/", controller.BaseHandler)
     r.GET("/weather", controller.GetCurrentWeather)
+    r.GET("/ping", controller.PingWeatherService)
 
     r.GET("/openapi/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
